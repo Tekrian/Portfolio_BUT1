@@ -1,0 +1,172 @@
+/* parcours.css */
+body::before {
+    content: '';
+    position: fixed;
+    top: 10%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(31, 99, 222, 0.12) 0%, transparent 70%);
+    filter: blur(50px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 5%;
+    right: -5%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(153, 102, 255, 0.08) 0%, transparent 70%);
+    filter: blur(60px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.split-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.sub-title.text-left {
+    text-align: left;
+    margin-bottom: 3rem;
+    font-size: 2.2rem;
+    color: var(--text-color);
+}
+
+.sub-title.text-left span {
+    color: var(--primary);
+}
+
+/* TIMELINE STYLES */
+.timeline {
+    position: relative;
+    padding-left: 2.5rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary), var(--secondary), transparent);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -2.5rem;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    border: 3px solid var(--secondary);
+    z-index: 2;
+}
+
+.timeline-dot.current {
+    border-color: var(--accent);
+    box-shadow: 0 0 15px rgba(255, 255, 133, 0.5);
+    animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+    0% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 133, 0.7); }
+    70% { transform: translateX(-50%) scale(1.1); box-shadow: 0 0 0 15px rgba(255, 255, 133, 0); }
+    100% { transform: translateX(-50%) scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 133, 0); }
+}
+
+.timeline-date {
+    display: inline-block;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+    background: rgba(255, 255, 133, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+}
+
+.timeline-content h3 {
+    color: var(--text-color);
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.timeline-content p{
+    color: var(--text-muted);
+    font-size: 1.05rem;
+}
+
+/* SKILLS STYLES */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-box {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.skill-box span {
+    font-weight: 600;
+    color: var(--text-color);
+    letter-spacing: 0.5px;
+    font-size: 1.1rem;
+}
+
+.tech-icon {
+    width: 65px;
+    height: 65px;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+
+.skill-box:hover .tech-icon {
+    transform: translateY(-8px) scale(1.15);
+}
+
+/* Hover effects adapted for each skill box to glow based on brand color */
+.html-box:hover { border-color: rgba(227, 79, 38, 0.6); box-shadow: 0 10px 30px rgba(227, 79, 38, 0.15); }
+.css-box:hover { border-color: rgba(21, 114, 182, 0.6); box-shadow: 0 10px 30px rgba(21, 114, 182, 0.15); }
+.c-box:hover { border-color: rgba(4, 79, 136, 0.6); box-shadow: 0 10px 30px rgba(4, 79, 136, 0.15); }
+.cpp-box:hover { border-color: rgba(4, 79, 136, 0.6); box-shadow: 0 10px 30px rgba(4, 79, 136, 0.15); }
+.pg-box:hover { border-color: rgba(51, 103, 145, 0.6); box-shadow: 0 10px 30px rgba(51, 103, 145, 0.15); }
+.bash-box:hover { border-color: rgba(255, 255, 255, 0.6); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1); }
+.python-box:hover { border-color: rgba(55, 118, 171, 0.6); box-shadow: 0 10px 30px rgba(55, 118, 171, 0.15); }
+.bootstrap-box:hover { border-color: rgba(121, 82, 179, 0.6); box-shadow: 0 10px 30px rgba(121, 82, 179, 0.15); }
+.qt-box:hover { border-color: rgba(65, 205, 82, 0.6); box-shadow: 0 10px 30px rgba(65, 205, 82, 0.15); }
+
+@media (max-width: 900px) {
+    .split-layout {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+}
